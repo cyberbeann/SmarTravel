@@ -30,13 +30,9 @@ let backToListButton = document.querySelector("#back__button");
 const leaveWelcomePage = (e) => {
   welcomePageContainer.style.transform = "translateX(-90%)";
   welcomePageContainer.addEventListener("transitionend", ()=>{welcomePageContainer.style.display="none"})
-  if(allItems.length == 0) {
+
     emptyListPageContainer.style.transform = "translateX(0)";
     emptyListPageContainer.style.display = "block"
-  }else{
-    allListContainer.style.transform = "translateX(0)";
-    allListContainer.style.display = "block"
-  }
 }
 
 const leaveEmptyListPage = (e) => {
@@ -76,13 +72,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
   editItemFormContainer.style.display = "none";
   confirmEditModal.style.display = "none";
   deleteAllItemButton.style.display = "none";
-  fetchItems();
+
 })
 
 // Event Listeners
 welcomeButton.addEventListener('click', leaveWelcomePage);
 emptyListPageButton.addEventListener('click', leaveEmptyListPage);
-addItemForm.addEventListener('submit', addItem);
+
 closeAddItemButton.addEventListener('click', hideAddItemForm);
 closeEditItemButton.addEventListener('click', (e)=> {e.preventDefault(); editItemFormContainer.style.display = "none"});
 homeButton.addEventListener('click', goHome);
