@@ -69,6 +69,7 @@ const allListPage = () => {
 // on render
 window.addEventListener('DOMContentLoaded', ()=>{
   emptyListPageContainer.style.display = "none";
+  selectDestPageContainer.style.display = "none";
   allListContainer.style.display = "none";
   addItemFormContainer.style.display = "none";
   editItemFormContainer.style.display = "none";
