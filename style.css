@@ -68,8 +68,9 @@
     inset: 0;
     z-index: 100;
 }
-.select__dest #map {
+#map {
     height:100%;
+    width: 100%;
 }
 
 
