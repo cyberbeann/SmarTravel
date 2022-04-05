@@ -65,11 +65,10 @@
     width: 100vw;
     transition: 0.4s;
     position: fixed;
-    background-color: white;
     inset: 0;
     z-index: 100;
 }
-#map {
+.select__dest #map {
     height:100%;
 }
 
