@@ -34,8 +34,8 @@ const leaveWelcomePage = (e) => {
   welcomePageContainer.style.transform = "translateX(-90%)";
   welcomePageContainer.addEventListener("transitionend", ()=>{welcomePageContainer.style.display="none"})
 
-    selectDestPageContainer.style.transform = "translateX(0)";
-    selectDestPageContainer.style.display = "block"
+  //  selectDestPageContainer.style.transform = "translateX(0)";
+   // selectDestPageContainer.style.display = "block"
 }
 
 const leaveEmptyListPage = (e) => {
