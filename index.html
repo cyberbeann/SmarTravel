@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./animate.min.css">
   <link rel="manifest" href="./manifest.json">
   <link rel="shortcut icon" href="./assets/icon-192.png" type="image/x-icon">
+  <script src="app.js"></script>
 </head>
 <body>
   <div class="container">
@@ -37,9 +38,9 @@
     <!-- End of empty list page -->
     
     
-    <!-- Maps page -->
-    <div class="map" id='map'>
-      <div class="map__container">
+    <!-- Select destination page -->
+    <div class="select__dest" id='select__dest'>
+      <div class="select__dest__container">
         <div id="floating-panel">
         <div>
           <div>
@@ -56,8 +57,12 @@
       <b>Get Route</b>
       <button id="click">Route</button>
       </div>
+      <div id="map"></div>
+      <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmtLCC59gzJQzRGsBvrJzsBQV99RvGIPo&callback=initMap&libraries=&v=weekly"
+      async></script>
     </div>
-    <!-- End of Maps page -->
+    <!-- End of Select destination page -->
 
     
     <!-- All your list items -->
