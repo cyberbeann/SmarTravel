@@ -2,6 +2,9 @@ let welcomePageContainer = document.querySelector("#welcome__container");
 let welcomeButton = document.querySelector("#welcome__page__button");
 export let emptyListPageContainer = document.querySelector("#empty__list");
 let emptyListPageButton = document.querySelector("#empty__list__page__button");
+
+export let selectDestPageContainer = document.querySelector("#select__dest__container");
+
 export let allListContainer = document.querySelector("#all__list");
 export let addItemButton = document.querySelector("#add__item__button");
 export let addItemForm = document.querySelector("#add__item__form");
@@ -31,8 +34,8 @@ const leaveWelcomePage = (e) => {
   welcomePageContainer.style.transform = "translateX(-90%)";
   welcomePageContainer.addEventListener("transitionend", ()=>{welcomePageContainer.style.display="none"})
 
-    emptyListPageContainer.style.transform = "translateX(0)";
-    emptyListPageContainer.style.display = "block"
+    selectDestPageContainer.style.transform = "translateX(0)";
+    selectDestPageContainer.style.display = "block"
 }
 
 const leaveEmptyListPage = (e) => {
@@ -63,7 +66,6 @@ const allListPage = () => {
 }
 
 
-
 // on render
 window.addEventListener('DOMContentLoaded', ()=>{
   emptyListPageContainer.style.display = "none";
@@ -74,6 +76,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   deleteAllItemButton.style.display = "none";
 
 })
+
 
 // Event Listeners
 welcomeButton.addEventListener('click', leaveWelcomePage);
