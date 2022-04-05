@@ -61,12 +61,13 @@
   /* End of welcome section */
 
 .select__dest {
-     height: 100%;
-    width: 100vw;
-    transition: 0.4s;
-    position: fixed;
-    inset: 0;
-    z-index: 100;
+     position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #DDD;
+    padding-top: 200px;
 }
 #map {
   margin: 20px 0;
