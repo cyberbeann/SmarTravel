@@ -500,8 +500,8 @@ customRoute.onchange = function() {
     } else if (d === "jw") {
       origin.disabled = true;
       dest.disabled = true;
-      origin.value = "644659";
-      dest.value = "Boon Lay MRT";
+      origin.value = "Boon Lay MRT";
+      dest.value = "Jurong Safra";
       document.getElementById("set_curr_loc").disabled = true;
     }
 }
