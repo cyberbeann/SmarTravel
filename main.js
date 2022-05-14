@@ -1,35 +1,18 @@
 let welcomePageContainer = document.querySelector("#welcome__container");
 let welcomeButton = document.querySelector("#welcome__page__button");
-export let emptyListPageContainer = document.querySelector("#empty__list");
-let emptyListPageButton = document.querySelector("#empty__list__page__button");
-
 export let selectDestPageContainer = document.querySelector("#select__dest__container");
-
-export let allListContainer = document.querySelector("#all__list");
-export let addItemButton = document.querySelector("#add__item__button");
-export let addItemForm = document.querySelector("#add__item__form");
-export let addItemFormContainer = document.querySelector("#add__item__form__container");
-export let allItemContainer = document.querySelector("#your__list__items");
-let closeAddItemButton = document.querySelector("#close__add__item__form");
-let closeEditItemButton = document.querySelector("#close__edit__item__form");
-let bottomNavPlusButton = document.querySelector("#bottom__nav__plus");
-export let editItemForm = document.querySelector("#edit__item__form");
-export let editItemFormContainer = document.querySelector("#edit__item__form__container");
-export let confirmEditModal = document.querySelector('.confirm__edit__modal');
-export let closeConfirmEditModalButton = document.querySelector(".close__edit__modal");
-export let confirmEditModalButton = document.querySelector(".confirm__edit");
-let menuButton = document.querySelector("#menu");
-export let deleteAllItemButton = document.querySelector('.delete__all');
+let ARbutton = document.querySelector("#goCamera");
+export let ARCameraPageContainer = document.querySelector("#AR__container");
+let ARtoSelect = document.querySelector("#back");
 let homeButton = document.querySelector("#home__button");
-let userGuideButton = document.querySelector("#user__guide__button");
-export let userGuideContainer = document.querySelector(".tour");
-export let confirmDeleteModal = document.querySelector('.delete__all__modal');
-export let confirmDeleteModalMessage = document.querySelector('.delete__modal__message');
-export let closeConfirmDeleteModalButton = document.querySelector(".close__delete__all__modal");
-export let confirmDeleteModalButton = document.querySelector(".confirm__delete__all");
-let backToListButton = document.querySelector("#back__button");
+export let addRouteForm = document.querySelector("#add_route__form");
+export let addRouteFormContainer = document.querySelector("#add_route__form__container");
+let bottomNavPlusButton = document.querySelector("#bottom__nav__plus");
+let closeaddRouteButton = document.querySelector("#close__add_route__form");
+let endPageContainer = document.querySelector("#end__container");
+let endHappyButton = document.querySelector("#end_trip_happy_button");
+let endSadButton = document.querySelector("#end_trip_sad_button");
 
-// Page Transition
 const leaveWelcomePage = (e) => {
   welcomePageContainer.style.transform = "translateX(-90%)";
   welcomePageContainer.addEventListener("transitionend", ()=>{welcomePageContainer.style.display="none"})
@@ -38,62 +21,56 @@ const leaveWelcomePage = (e) => {
   selectDestPageContainer.style.display = "block"
 }
 
-const leaveEmptyListPage = (e) => {
-  emptyListPageContainer.style.transform = "translateX(-90%)";
-  emptyListPageContainer.addEventListener("transitionend", ()=>{welcomePageContainer.style.display="none"})
-  allListContainer.style.display = "block"
+const goARCamera = (e) => {
+  selectDestPageContainer.style.transform = "translateX(-90%)";
+  selectDestPageContainer.addEventListener("transitionend", ()=>{welcomePageContainer.style.display="none"})
+  selectDestPageContainer.style.display = "none";
+
+  ARCameraPageContainer.style.transform = "translateX(0)";
+  ARCameraPageContainer.style.display = "block"
 }
 
-const hideAddItemForm = (e) => {
-  addItemFormContainer.style.display = "none";
+const ARCamToSelectDest = (e) => {
+  ARCameraPageContainer.style.transform = "translateX(-90%)";
+  ARCameraPageContainer.addEventListener("transitionend", ()=>{welcomePageContainer.style.display="none"})
+  ARCameraPageContainer.style.display = "none";
+
+  selectDestPageContainer.style.transform = "translateX(0)";
+  selectDestPageContainer.style.display = "block"
+}
+
+const ARCamToEndPage = (e) => {
+  ARCameraPageContainer.style.transform = "translateX(-90%)";
+  ARCameraPageContainer.addEventListener("transitionend", ()=>{welcomePageContainer.style.display="none"})
+  ARCameraPageContainer.style.display = "none";
+
+  endPageContainer.style.transform = "translateX(0)";
+  endPageContainer.style.display = "block"
 }
 
 const goHome = () => {
   location.reload();
 }
 
-const userGuidePage = () =>{
-  userGuideButton.style.display = "none";
-  userGuideContainer.style.display = "block";
-  backToListButton.style.display = "block";
+const hideaddRouteForm = (e) => {
+  addRouteFormContainer.style.display = "none";
 }
-
-const allListPage = () => {
-  userGuideContainer.style.display = "none"
-  allListContainer.style.display = "block"
-  userGuideButton.style.display = "block";
-  backToListButton.style.display = "none"
-}
-
 
 // on render
 window.addEventListener('DOMContentLoaded', ()=>{
-  emptyListPageContainer.style.display = "none";
   selectDestPageContainer.style.display = "none";
-  allListContainer.style.display = "none";
-  addItemFormContainer.style.display = "none";
-  editItemFormContainer.style.display = "none";
-  confirmEditModal.style.display = "none";
-  deleteAllItemButton.style.display = "none";
-
+  ARCameraPageContainer.style.display = "none";
+  addRouteFormContainer.style.display = "none";
+  endPageContainer.style.display = "none";
 })
+
 
 
 // Event Listeners
 welcomeButton.addEventListener('click', leaveWelcomePage);
-emptyListPageButton.addEventListener('click', leaveEmptyListPage);
-
-closeAddItemButton.addEventListener('click', hideAddItemForm);
-closeEditItemButton.addEventListener('click', (e)=> {e.preventDefault(); editItemFormContainer.style.display = "none"});
-homeButton.addEventListener('click', goHome);
-backToListButton.addEventListener('click', allListPage)
-userGuideButton.addEventListener('click', userGuidePage)
-bottomNavPlusButton.addEventListener('click', ()=> {userGuideContainer.style.display = "none"; addItemFormContainer.style.display = "block"});
-deleteAllItemButton.addEventListener('click', deleteAllItems)
-menuButton.addEventListener('click', ()=>{
-  if(deleteAllItemButton.style.display == "none"){
-      deleteAllItemButton.style.display = "block"
-  }else{
-      deleteAllItemButton.style.display = "none"
-  }
-})
+ARbutton.addEventListener('click', goARCamera);
+back.addEventListener('click', ARCamToSelectDest);
+bottomNavPlusButton.addEventListener('click', ()=> {addRouteFormContainer.style.display = "block"});
+closeaddRouteButton.addEventListener('click', hideaddRouteForm);
+endHappyButton.addEventListener('click', goHome);
+endSadButton.addEventListener('click', goHome);
