@@ -9,7 +9,7 @@ function ARCamToEndPage() {
   
     endPageContainer.style.transform = "translateX(0)";
     endPageContainer.style.display = "block"
-  }
+}
 
 const jlgRoute = {
     distance:
@@ -25,7 +25,6 @@ const jlgRoute = {
      103.72318,1.34102,
      103.72364,1.34091,
      103.72363,1.34086,
-    
     ],
     coords:
     [  
@@ -48,7 +47,6 @@ const jlgRoute = {
           103.72432,1.33999,
           103.72437,1.34003,
           103.72439,1.34012,
-          
     ]
 };
 
@@ -190,10 +188,14 @@ function calcRoute() {
                 const arr = getCoordinates(result);
                 ramps = [];
                 places = arrToPlaces(arr);
-                if (commMarkerD) {
+                if (commMarkerD != null) {
                     commMarkerD.setMap(null);
                     commMarkerO.setMap(null);
                     flightPath.setMap(null);
+                    rampPoints.forEach((marker) => {
+                        marker.setMap(null);
+                    });
+                    rampPoints = [];
                 }
                 document.getElementById("selectHead").innerHTML = "Distance: " + result.routes[0].legs[0].distance.text + "<br />Duration: " + result.routes[0].legs[0].duration.text;
             } else {
@@ -215,21 +217,27 @@ function calcRoute() {
 
 function plotCommunityRoute(route) {
     directionDisplay.setDirections({routes: []});
-        plotRoute(route.coords);
-        ramps = arrToPlaces(route.ramps);     
-        plotRamps(ramps);  
-        document.getElementById("selectHead").innerHTML = "Distance: " + route.distance + "<br />Duration: " + route.duration 
-        + "<br />Difficulty: ";
-        
-        if (route.difficulty == "Easy") {
-            document.getElementById("selectHead").innerHTML = document.getElementById("selectHead").innerHTML 
-            + '<i class="fa-solid fa-face-smile"></i>';
-        } else {
-            document.getElementById("selectHead").innerHTML = document.getElementById("selectHead").innerHTML 
-            + '<i class="fa-solid fa-face-frown"></i>';
-        }
-        
-
+    if (commMarkerD != null) {
+        commMarkerD.setMap(null);
+        commMarkerO.setMap(null);
+        flightPath.setMap(null);
+        rampPoints.forEach((marker) => {
+            marker.setMap(null);
+        });
+    }
+    plotRoute(route.coords);
+    ramps = arrToPlaces(route.ramps);     
+    plotRamps(ramps);  
+    document.getElementById("selectHead").innerHTML = "Distance: " + route.distance + "<br />Duration: " + route.duration 
+    + "<br />Difficulty: ";
+    
+    if (route.difficulty == "Easy") {
+        document.getElementById("selectHead").innerHTML = document.getElementById("selectHead").innerHTML 
+        + '<i class="fa-solid fa-face-smile"></i>';
+    } else {
+        document.getElementById("selectHead").innerHTML = document.getElementById("selectHead").innerHTML 
+        + '<i class="fa-solid fa-face-frown"></i>';
+    }
 }
 
 
@@ -243,19 +251,9 @@ function zoomToObject(obj){
 }
 
 function plotRamps(places) {
-
-    if (rampPoints.length == 0) {
-
-    } else {
-        rampPoints.forEach((point) => { 
-            point.setMap(null);
-        });
-        rampPoints = [];
-    }
-
     if (places.length == 0) {
         return
-    }
+    };
 
     places.forEach((place) => {
         let latitude = place.location.lat;
@@ -340,7 +338,6 @@ function arrToPolyline(arr) {
     for (let i = 0; i < arr2.length; i++) {
         polyline.push({lat: arr2[i][1], lng: arr2[i][0]});
     }
-
     return polyline;
 }
 
@@ -500,16 +497,11 @@ customRoute.onchange = function() {
     } else if (d === "jw") {
       origin.disabled = true;
       dest.disabled = true;
-      origin.value = "Boon Lay MRT";
-      dest.value = "Jurong Safra";
+      origin.value = "644659";
+      dest.value = "Boon Lay MRT";
       document.getElementById("set_curr_loc").disabled = true;
     }
 }
-
-
-
-
-
 
 document.getElementById("currentLocation").addEventListener("click",() => { getCurrentLocation(); getUserLocation(map); });
 document.getElementById("set_curr_loc").addEventListener("click", setCurrentLocation);
