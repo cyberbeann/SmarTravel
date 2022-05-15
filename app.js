@@ -50,6 +50,7 @@ const jlgRoute = {
     ]
 };
 
+//Alternative route for testing
 const boonLayRoute = {
     distance: 
     "0.60km",
